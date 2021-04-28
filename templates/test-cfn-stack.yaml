@@ -1,0 +1,19 @@
+Parameters:
+  BucketName:
+    Type: String
+  TableName:
+    Type: String
+
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName:
+        Ref: BucketName
+  SomeChildStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: "https://cfn-include-test-bucket.s3-us-west-2.amazonaws.com/templates/child/test-cfn-child-stack.yaml"
+      Parameters:
+        TableName:
+          Ref: TableName

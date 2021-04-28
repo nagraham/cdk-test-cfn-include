@@ -1,0 +1,19 @@
+Parameters:
+  TableName:
+    Type: String
+
+Resources:
+  SomeDynamoTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName:
+        Ref: TableName
+      AttributeDefinitions:
+        -
+          AttributeName: "Foo"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "Foo"
+          KeyType: "HASH"
+      BillingMode: "PAY_PER_REQUEST"
