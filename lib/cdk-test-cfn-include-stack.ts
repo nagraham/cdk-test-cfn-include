@@ -6,11 +6,6 @@ export class CdkTestCfnIncludeStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
-    const testBkt = new s3.Bucket(this, "cfn-include-748350247862-test-bucket", {
-      bucketName: "cfn-include-test-bucket"
-    })
-
     // Because we are converting from CdkStack to CfnInclude, this is a more
     // complicated situation than the standard use case of taking a CloudFormation
     // stack and using CfnInclude from the get-go.

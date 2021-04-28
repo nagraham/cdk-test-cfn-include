@@ -56,6 +56,7 @@ export class TestCfnStack extends cdk.NestedStack {
         new s3.Bucket(someChildStack, "a-random-bucket-for-fun", {
             bucketName: "748350247862-cfn-include-another-test-bucket",
             encryption: BucketEncryption.S3_MANAGED,
+            enforceSSL: true,
         })
     }
 }
