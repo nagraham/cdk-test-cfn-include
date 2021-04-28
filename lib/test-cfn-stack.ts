@@ -1,6 +1,7 @@
 import * as cdk from "@aws-cdk/core"
 import * as cfninc from "@aws-cdk/cloudformation-include"
 import * as s3 from "@aws-cdk/aws-s3";
+import {BucketEncryption} from "@aws-cdk/aws-s3";
 import * as kms from "@aws-cdk/aws-kms";
 import * as ddb from "@aws-cdk/aws-dynamodb";
 
@@ -50,5 +51,11 @@ export class TestCfnStack extends cdk.NestedStack {
             sseEnabled: true,
             sseType: "KMS",
         }
+
+        // add a bucket to the child stack
+        new s3.Bucket(someChildStack, "a-random-bucket-for-fun", {
+            bucketName: "748350247862-cfn-include-another-test-bucket",
+            encryption: BucketEncryption.S3_MANAGED,
+        })
     }
 }
